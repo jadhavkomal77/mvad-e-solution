@@ -49,6 +49,7 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:5173",
   "https://mvad-e-solution-client.vercel.app",
+  "https://www.mvadops.com",
 
 ];
 
