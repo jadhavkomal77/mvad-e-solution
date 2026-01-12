@@ -48,7 +48,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://komal-vercel-tqgf.vercel.app",
+  "https://mvad-e-solution-client.vercel.app",
 
 ];
 
