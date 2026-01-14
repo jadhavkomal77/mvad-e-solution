@@ -118,15 +118,23 @@ export const createSuperAdminContact = async (req, res) => {
     /* ===== SAVE TO DB ===== */
     await SuperAdminContact.create(cleanData);
 
-    /* ===== SEND THANK YOU SMS (NON-BLOCKING) ===== */
-    sendThankYouSMS({ phone, name }).catch(() => {
-      // SMS failure should NOT block API success
-    });
+    // sendThankYouSMS({ phone, name }).catch(() => {
+    // });
+    sendThankYouSMS({ phone, name }).catch((err) => {
+  console.error("SMS failed for:", phone, err);
+});
 
+
+    // return res.status(201).json({
+    //   success: true,
+    //   message: "Message sent successfully",
+    // });
     return res.status(201).json({
-      success: true,
-      message: "Message sent successfully",
-    });
+  success: true,
+  message: "Message sent successfully",
+  smsSent: true,
+});
+
   } catch (err) {
     console.error("CONTACT ERROR:", err);
     res.status(500).json({ message: "Server Error" });

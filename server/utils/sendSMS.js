@@ -2,7 +2,10 @@ import unirest from "unirest";
 
 export const sendThankYouSMS = ({ phone, name }) =>
   new Promise((resolve, reject) => {
-    const message = `Thank you ${name}! We received your enquiry. Our team will contact you shortly.`;
+    const message = `Hi ${name}, thank you for contacting MVAD IT Solutions.
+We have received your enquiry and our team will contact you shortly.`;
+
+
 
     const req = unirest(
       "GET",
