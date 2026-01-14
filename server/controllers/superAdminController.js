@@ -14,6 +14,8 @@ const cookieOptions = {
   path: "/",
 };
 
+
+
 /* ================= REGISTER ================= */
 export const superAdminRegister = async (req, res) => {
   try {
@@ -63,7 +65,7 @@ export const superAdminLogin = async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    res.cookie("superToken", token, cookieOptions);
+     res.cookie("superToken", token, cookieOptions);
 
     res.json({
       success: true,
@@ -74,6 +76,7 @@ export const superAdminLogin = async (req, res) => {
         email: superAdmin.email,
       },
     });
+   
   } catch {
     res.status(500).json({ message: "Server Error" });
   }

@@ -37,7 +37,8 @@ export default function SuperAdminContact() {
     onSubmit: async (values, { resetForm }) => {
       try {
         await createContact(values).unwrap();
-        toast.success("Message sent successfully! 🚀");
+       toast.success("Thank you! We’ve sent a confirmation message to your mobile 📩");
+
         resetForm();
       } catch {
         toast.error("Failed to send message. Try again.");

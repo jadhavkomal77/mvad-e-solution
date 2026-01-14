@@ -89,7 +89,7 @@ export default function SuperAdminPublicFeedback() {
 
               {/* RATING */}
             {/* RATING (SCREENSHOT STYLE) */}
-<div className="border border-gray-200 rounded-xl p-6 bg-[#FAFBFD]">
+{/* <div className="border border-gray-200 rounded-xl p-6 bg-[#FAFBFD]">
   <p className="font-semibold text-gray-800 mb-4">
     How was your experience?
   </p>
@@ -113,6 +113,36 @@ export default function SuperAdminPublicFeedback() {
     ))}
 
     <span className="ml-4 text-gray-600 text-sm">
+      {formik.values.rating}/5
+    </span>
+  </div>
+</div> */}
+
+
+<div className="border border-gray-200 rounded-xl p-6 bg-[#FAFBFD]">
+  <p className="font-semibold text-gray-800 mb-4">
+    How was your experience?
+  </p>
+
+  <div className="flex flex-wrap items-center gap-3">
+    {[1, 2, 3, 4, 5].map((r) => (
+      <button
+        key={r}
+        type="button"
+        onClick={() => formik.setFieldValue("rating", r)}
+        className="focus:outline-none"
+      >
+        <Star
+          className={`w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 transition ${
+            r <= formik.values.rating
+              ? "fill-yellow-200 text-yellow-400"
+              : "text-gray-400"
+          }`}
+        />
+      </button>
+    ))}
+
+    <span className="ml-0 sm:ml-4 text-gray-600 text-sm w-full sm:w-auto">
       {formik.values.rating}/5
     </span>
   </div>

@@ -73,7 +73,7 @@ export default function SuperAdminPublicNavbar() {
         </div>
 
         {/* DESKTOP MENU */}
-        <nav className="hidden lg:flex gap-4">
+        {/* <nav className="hidden lg:flex gap-4">
           {buttons.map((btn) => (
             <button
               key={btn.label}
@@ -89,7 +89,34 @@ export default function SuperAdminPublicNavbar() {
               {btn.label}
             </button>
           ))}
-        </nav>
+        </nav> */}
+
+        <nav className="hidden lg:flex items-center gap-10">
+  {buttons.map((btn) => {
+    const isActive =
+      btn.type === "path" && location.pathname === btn.path;
+
+    return (
+      <button
+        key={btn.label}
+        onClick={() => handleClick(btn)}
+        className={`
+          relative text-[16px] font-medium tracking-normal
+          text-gray-700 hover:text-blue-600 transition
+          after:absolute after:left-0 after:-bottom-1
+          after:h-[2px] after:w-full after:bg-blue-600
+          after:scale-x-0 after:origin-left
+          after:transition-transform
+          hover:after:scale-x-100
+          ${isActive ? "text-blue-600 after:scale-x-100" : ""}
+        `}
+      >
+        {btn.label}
+      </button>
+    );
+  })}
+</nav>
+
 
         {/* MOBILE ICON */}
         <button className="lg:hidden" onClick={() => setOpen(!open)}>
